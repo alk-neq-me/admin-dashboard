@@ -27,7 +27,7 @@ class SpecificationParser(Parser[T, Specification]):
     def parse(self, raw: T) -> List[Specification]:
         specs: List[Specification] = []
 
-        for k, v in raw["specification"].items():
+        for k, v in raw.get("specification", {}).items():
             specs.append(Specification(name=k, value=v))
 
         return specs

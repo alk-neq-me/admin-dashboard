@@ -15,8 +15,13 @@ from libs.exporter import Exporter
 from libs.brand_parser import BrandParser
 
 
-INPUT_RAW_DATA = Path("./data/laptops.json")
-OUTPUT_RAW_DATA = Path("./products[:2].json")
+BASE_DIR = Path().parent
+
+DATA_DIR = BASE_DIR / Path("data")
+
+INPUT_RAW_FILES = DATA_DIR.glob("*.json")
+
+OUTPUT_RAW_DATA = Path("./products.json")
 
 logging.basicConfig(
     format="[ %(levelname)s::%(asctime)s ] %(message)s",
@@ -24,7 +29,7 @@ logging.basicConfig(
 )
 
 
-def fileds_export() -> None:
+def fileds_export(raw: Path) -> None:
     serializer = JSONSerializer[List[RawProduct]]()
     exporter = Exporter()
 
@@ -33,18 +38,22 @@ def fileds_export() -> None:
     category_parser = CategoryParser()
     sales_category_parser = SalesCategoryParser()
 
-    exporter.export(serializer, brand_parser, INPUT_RAW_DATA)
-    exporter.export(serializer, category_parser, INPUT_RAW_DATA)
-    exporter.export(serializer, sales_category_parser, INPUT_RAW_DATA)
+    exporter.export(serializer, brand_parser, raw)
+    exporter.export(serializer, category_parser, raw)
+    exporter.export(serializer, sales_category_parser, raw)
 
 
 def product_export() -> None:
     serializer = JSONSerializer[List[RawProduct]]()
-    installer = InstallFields(INPUT_RAW_DATA)
+    products = []
 
-    product = installer.install(serializer)
+    for raw in INPUT_RAW_FILES:
+        installer = InstallFields(raw)
+        product = installer.install(serializer)
 
-    excel_handler = ExcelHandler(data=product[:2], save_as=Path(OUTPUT_RAW_DATA.with_suffix(".xlsx")))
+        products.extend(product)
+
+    excel_handler = ExcelHandler(data=products, save_as=Path(OUTPUT_RAW_DATA.with_suffix(".xlsx")))
     excel_handler.export()
 
 

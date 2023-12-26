@@ -30,7 +30,7 @@ class CategoryParser(Parser[T, Category]):
     def parse(self, raw: T) -> List[Category]:
         categories: List[Category] = []
 
-        for i in raw["category"]:
+        for i in raw.get("category", []):
             categories.append(Category(name=i))
 
         return categories

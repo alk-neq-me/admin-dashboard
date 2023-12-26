@@ -19,7 +19,6 @@ class InstallFields:
         raw = serializer.serialize(self.raw_path)
 
         result: List[Product] = []
-        print(raw[0])
 
         for product in raw:
             brand = BrandParser().parse(product)
@@ -44,7 +43,7 @@ class InstallFields:
                 salesCategory = "\n".join(i["name"] for i in sales_categories),
                 quantity = 1,
                 specification = "\n".join(f"{i['name']}: {i['value']}" for i in specifications),
-                discount = product["discount"],
+                discount = product.get("discount", 0),
                 instockStatus = "AskForStock",
                 dealerPrice = product.get("dealer_price", 0),
                 colors = "\n".join(product["color"]),

@@ -30,7 +30,7 @@ class SalesCategoryParser(Parser[T, SalesCategory]):
     def parse(self, raw: T) -> List[SalesCategory]:
         sales: List[SalesCategory] = []
 
-        for i in raw["sales_category"]:
+        for i in raw.get("sales_category", []):
             sales.append(SalesCategory(name=i))
 
         return sales
