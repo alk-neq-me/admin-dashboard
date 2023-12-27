@@ -16,3 +16,6 @@ class ExcelHandler(Generic[T]):
         df =  pl.DataFrame(self.data)
         df.write_excel(self.save_as)
         logging.info("📑 Success export excel.")
+
+    def log(self) -> None:
+        print(self.data)
