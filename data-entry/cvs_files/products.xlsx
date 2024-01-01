@@ -1,4 +1,0 @@
-id,status,title,type,price,overview,features,marketPrice,categories,priceUnit,images,warranty,description,salesCategory,quantity,specification,discount,instockStatus,dealerPrice,colors,brandName
-c23387ea0f19b11e8aa79a48,Draft,New poduct from Rust 🦀!,"",0.0,<h1>Product overview</h1>,<h1>Product feature</h1>,0.0,"Fav_Rust
-Next Rust",SGD,"",0,<h1>Description</h1>,"",1,"Ram: good
- Ready to use: Yes",0,AskForStock,0,White,Rust
