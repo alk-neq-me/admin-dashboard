@@ -20,9 +20,6 @@ fn main() -> Result<(), Error> {
     dotenv().ok();
 
     let p1 = Product::builder()
-        // .set_id(Some("6592852d67615710332551e6"))
-        .set_id(None)
-
         .set_title("New Product")
         .set_brand_name("New brand")
 
