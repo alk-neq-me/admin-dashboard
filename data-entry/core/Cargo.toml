@@ -9,6 +9,7 @@ license.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+chrono = { version = "0.4.31", features = ["serde"] }
 hex = "0.4.3"
 polars = { version = "0.35.4", features = ["json", "serde"] }
 rand = "0.8.5"

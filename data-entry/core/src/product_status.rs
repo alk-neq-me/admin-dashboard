@@ -19,6 +19,6 @@ impl ToString for ProductStatus {
 
 impl Default for ProductStatus {
     fn default() -> Self {
-        ProductStatus::Draft
+        ProductStatus::Pending
     }
 }

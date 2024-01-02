@@ -5,8 +5,10 @@ use std::path::Path;
 use polars::io::{json::JsonReader, SerReader, csv::CsvWriter, SerWriter};
 use serde::Serialize;
 
+use crate::error;
 
-pub fn export_excel<T>(products: &Vec<T>, path: &Path) 
+
+pub fn export_excel<T>(products: &Vec<T>, path: &Path)  -> Result<(), error::Error>
 where
     T: Serialize
 {
@@ -21,7 +23,9 @@ where
 
     if !dir.is_dir() { fs::create_dir(Path::new(dir)).expect("Failed: could not create dir."); }
 
-    let mut file = File::create(path).expect("Failed: could not create csv");
+    let mut file = File::create(path).map_err(|_| error::Error::IoFileError)?;
 
-    CsvWriter::new(&mut file).finish(&mut df).expect("Faield: could not write csv");
+    CsvWriter::new(&mut file).finish(&mut df).map_err(|_| error::Error::IoCsvError)?;
+
+    Ok(())
 }

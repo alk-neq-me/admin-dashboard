@@ -1,2 +1,2 @@
-id,status,title,type,price,overview,features,marketPrice,categories,priceUnit,images,warranty,description,salesCategory,quantity,specification,discount,instockStatus,dealerPrice,colors,brandName
-1c47232f8117e8fcffe2e737,Draft,New Product,"",0.0,<h1>Product overview</h1>,<h1>Product feature</h1>,0.0,"",MMK,"",0,<h1>Description</h1>,"",1,"",0,AskForStock,0,"",""
+title,status,instockStatus,priceUnit,warranty,quantity,price,marketPrice,dealerPrice,discount,brandName,sales.name,sales.startDate,sales.endDate,sales.discount
+New Product,Pending,AskForStock,MMK,0,1,0.0,0.0,0,0,New brand,Gigi,2024-01-02T09:40:55.693970562Z,2024-01-03T09:40:55.693978892Z,24.5

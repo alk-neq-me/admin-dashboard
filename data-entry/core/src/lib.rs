@@ -6,3 +6,4 @@ pub mod price_unit;
 pub mod instock_status;
 pub mod product_builder;
 pub mod parser;
+pub mod error;
