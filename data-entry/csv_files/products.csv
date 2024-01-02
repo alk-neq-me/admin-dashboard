@@ -1,2 +1,2 @@
-title,status,instockStatus,priceUnit,warranty,quantity,price,marketPrice,dealerPrice,discount,brandName,sales.name,sales.startDate,sales.endDate,sales.discount
-New Product,Pending,AskForStock,MMK,0,1,0.0,0.0,0,0,New brand,Gigi,2024-01-02T09:40:55.693970562Z,2024-01-03T09:40:55.693978892Z,24.5
+id,title,status,instockStatus,priceUnit,warranty,quantity,price,marketPrice,dealerPrice,discount,brandName,sales.name,sales.startDate,sales.endDate,sales.discount
+601d2f302bc1370f7a2d6288,New Product,Pending,AskForStock,MMK,0,1,0.0,0.0,0,0,New brand,Gigi,2024-01-02T10:21:51.843048931Z,2024-01-03T10:21:51.843051659Z,24.5
