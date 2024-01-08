@@ -2,17 +2,19 @@ use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub enum InstockStatus {
-    InStock,
+    Available,
     OutOfStock,
-    AskForStock
+    AskForStock,
+    Discontinued
 }
 
 impl ToString for InstockStatus {
     fn to_string(&self) -> String {
         match self {
-            InstockStatus::InStock => String::from("InStock"),
+            InstockStatus::Available => String::from("Available"),
             InstockStatus::OutOfStock => String::from("OutOfStock"),
-            InstockStatus::AskForStock => String::from("AskForStock")
+            InstockStatus::AskForStock => String::from("AskForStock"),
+            InstockStatus::Discontinued => String::from("Discontinued")
         }
     }
 }

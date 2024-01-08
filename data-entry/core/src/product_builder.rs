@@ -17,7 +17,6 @@ pub struct ProductBuilder {
     pub categories: Option<String>,
     pub price_unit: PriceUnit,
     pub images: Option<String>,
-    pub warranty: Option<i32>,
     pub description: Option<String>,
     pub quantity: Option<i32>,
     pub specification: Option<String>,
@@ -50,7 +49,6 @@ impl Default for ProductBuilder {
             categories: None,
             price_unit: PriceUnit::default(),
             images: None,
-            warranty: Some(0),
             quantity: Some(1),
             discount: Some(0),
             instock_status: InstockStatus::default(),
@@ -111,11 +109,6 @@ impl ProductBuilder {
 
     pub fn set_images(&mut self, images: &str) -> &mut Self {
         self.images = Some(String::from(images));
-        self
-    }
-
-    pub fn set_warranty(&mut self, warranty: i32) -> &mut Self {
-        self.warranty = Some(warranty);
         self
     }
 
@@ -196,7 +189,6 @@ impl ProductBuilder {
             self.categories.clone(),
             self.price_unit.clone(),
             self.images.clone(),
-            self.warranty.expect("warranty is required"),
             self.description.clone(),
             self.quantity.expect("quantity is required"),
             self.specification.clone(),

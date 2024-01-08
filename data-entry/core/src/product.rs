@@ -16,17 +16,18 @@ pub struct Product {
     instock_status: InstockStatus,
     price_unit: PriceUnit,
     images: Option<String>,
-    warranty: i32,
     quantity: i32,
     specification: Option<String>,
     price: f32,
     market_price: f32,
     dealer_price: i32,
     discount: i32,
-    brand_name: String,
     categories: Option<String>,
     overview: Option<String>,
     description: Option<String>,
+   
+    #[serde(rename(serialize = "brand.name"))]
+    brand_name: String,
 
     #[serde(rename(serialize = "sales.name"))]
     sales_name: Option<String>,
@@ -53,7 +54,6 @@ impl Product {
         categories: Option<String>,
         price_unit: PriceUnit,
         images: Option<String>,
-        warranty: i32,
         description: Option<String>,
         quantity: i32,
         specification: Option<String>,
@@ -69,7 +69,7 @@ impl Product {
         sales_description: Option<String>,
         sales_discount: Option<f32>
     ) -> Product {
-        Product { id, title, price, overview, market_price, categories, price_unit, images, warranty, description, 
+        Product { id, title, price, overview, market_price, categories, price_unit, images, description, 
             quantity, specification, discount, instock_status, dealer_price, brand_name, status,
 
             sales_name, sales_start_date, sales_end_date, sales_is_active, sales_description, sales_discount

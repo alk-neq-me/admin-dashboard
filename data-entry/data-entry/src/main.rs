@@ -2,13 +2,16 @@
 
 use std::path::Path;
 
-use core::{parser, excel};
 use core::error::Error;
 use core::product::Product;
+use core::{excel, parser};
+use std::sync::{Mutex, Arc};
 
-use chrono::{DateTime, Utc, Duration};
+use chrono::{DateTime, Duration, Utc};
 use dotenv::dotenv;
 
+
+const OUTPUT: &'static str = "csv_files";
 
 /**
 * =TEXT(NOW(), "yyyy-mm-ddThh:mm:ss.000000000Z")    :: for iso date fromat  -> zero 9 words
@@ -16,28 +19,28 @@ use dotenv::dotenv;
 * =FALSE()                                          :: for boolean type
 */
 
+
 fn main() -> Result<(), Error> {
     dotenv().ok();
 
     let p1 = Product::builder()
         .set_title("New Product")
         .set_brand_name("New brand")
-
         .set_overview(None)
         .set_specification(None)
         .set_description(None)
-        
+        .set_specification(Some(&["Ram: 2TB", "Avaliable colors: White, Seablue"]))
+
         // Sales
         .set_sales_name(Some("Gigi"))
         .set_sales_start_date(Some(Utc::now()))
         .set_sales_end_date(Some(Utc::now() + Duration::hours(24)))
         .set_sales_discount(Some(24.5))
-
         .build();
 
     let products = vec![p1];
 
-    let mut file = Path::new("csv_files").join("products");
+    let mut file = Path::new(OUTPUT).join("products");
     file.set_extension("csv");
 
     excel::export_excel(&products, &file)?;
